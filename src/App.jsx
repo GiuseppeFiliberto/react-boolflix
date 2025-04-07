@@ -1,24 +1,19 @@
 import { useState } from "react"
 import { useMoviesContext, GlobalProvider } from "./context/GlobalContext"
 
-
-
 function Content() {
-  const { movies, setQuery } = useMoviesContext()
-  const [searchInput, setSearchInput] = useState('')
+  const { movies, setQuery } = useMoviesContext();
+  console.log(movies);
 
+  const [searchInput, setSearchInput] = useState('');
 
   const handleMovieSearch = () => {
-
-    setQuery(searchInput)
-
-  }
+    setQuery(searchInput);
+  };
 
   return (
     <>
-
       <div className="container">
-
         <div className="mb-3">
           <input
             type="text"
@@ -32,38 +27,41 @@ function Content() {
           />
         </div>
 
-        <button onClick={handleMovieSearch} className="btn btn-primary mb-3">Search</button>
+        <button onClick={handleMovieSearch} className="btn btn-primary mb-3">
+          Search
+        </button>
       </div>
 
-      <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-        {movies.map(movie => (
-          <div key={movie.id} className="col">
-            <div className="card h-100">
-              <div className="card-body">
-                <img className="poster" src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} alt="" />
-                <h4>{movie.title ? movie.title : movie.name}</h4>
-                <p>{movie.original_title ? movie.original_title : movie.original_name}</p>
-
-                <p>{movie.original_language.toUpperCase()}</p>
-
-
+      {movies.length > 0 ? (
+        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+          {movies.map((movie) => (
+            <div key={movie.id} className="col">
+              <div className="card h-100">
+                <div className="card-body">
+                  <img
+                    className="poster"
+                    src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
+                    alt={movie.title || movie.name}
+                  />
+                  <h4>{movie.title ? movie.title : movie.name}</h4>
+                  <p>{movie.original_title ? movie.original_title : movie.original_name}</p>
+                  <p>{movie.original_language.toUpperCase()}</p>
+                </div>
               </div>
             </div>
-          </div>
-
-        ))}
-      </div >
-
-
+          ))}
+        </div>
+      ) : (
+        <p className="text-center">No movies found. Try searching for something else.</p>
+      )}
     </>
-  )
+  );
 }
 
 export default function App() {
-
   return (
     <GlobalProvider>
       <Content />
     </GlobalProvider>
-  )
+  );
 }

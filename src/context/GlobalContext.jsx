@@ -14,8 +14,12 @@ function GlobalProvider({ children }) {
 
         fetch(base_movies_api_url)
             .then(res => res.json())
-            .then(data => console.log('Movies Data:', data))
+            .then(data => {
+                console.log('Movies Data:', data);
+                setMovies(data.results || []);
+            })
             .catch(err => console.error('Fetch Error:', err));
+
     }, [query]);
 
 
