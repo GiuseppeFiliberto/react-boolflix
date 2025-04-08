@@ -24,9 +24,14 @@ body {
   background-color: var(--primary-color);
 }
 
-/* utilities */
 
 
+
+span:hover {
+  color: var(--danger-color);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
 
 .movie-card {
   position: relative;

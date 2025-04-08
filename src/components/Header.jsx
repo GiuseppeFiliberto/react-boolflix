@@ -18,17 +18,15 @@ export default function Header({ onSearchSubmit }) {
         <>
             <header className="bg-dark text-white py-3">
                 <div className="d-flex justify-content-between mx-5">
-                    <div className="logo">
-                        <img src={Logo} alt="" style={{ width: "200px" }} />
+                    <div className="left-side d-flex gap-5 align-items-center">
+                        <NavLink to='/' className="logo">
+                            <img src={Logo} alt="" style={{ width: "200px" }} />
+                        </NavLink>
+                        <NavLink to="/searchmovie" className="text-white text-decoration-none">
+                            <span className="fw-bold hover-effect">Search for a Movie</span>
+                        </NavLink>
                     </div>
-                    <nav className="d-flex gap-3 align-items-center">
-                        <NavLink to="/" className="text-white text-decoration-none">
-                            Home
-                        </NavLink>
-                        <NavLink to="/trending" className="text-white text-decoration-none">
-                            Trending
-                        </NavLink>
-                    </nav>
+
                     <div className="mb-3 d-flex gap-2">
                         <input
                             type="text"
