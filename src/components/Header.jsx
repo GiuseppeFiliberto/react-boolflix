@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useMoviesContext } from "../context/GlobalContext";
+import Logo from "../assets/Logonetflix.png";
+
 
 export default function Header() {
     const [searchInput, setSearchInput] = useState('');
@@ -10,9 +12,13 @@ export default function Header() {
 
     return (
         <>
-            <header>
-                <div className="container">
-                    <div className="mb-3">
+            <header className="bg-dark text-white py-3">
+                <div className="d-flex justify-content-between mx-5">
+                    <div className="logo">
+                        <img src={Logo} alt="" style={{ width: "200px" }} />
+                    </div>
+                    <div className="mb-3 d-flex gap-2">
+
                         <input
                             type="text"
                             className="form-control"
@@ -23,14 +29,17 @@ export default function Header() {
                             value={searchInput}
                             onChange={(e) => setSearchInput(e.target.value)}
                         />
+
+                        <button
+                            className="btn btn-primary ml-3"
+                            type="button"
+                            onClick={handleMovieSearch}
+                        >
+                            Search
+                        </button>
                     </div>
 
-                    <button
-                        className="btn btn-primary"
-                        onClick={handleMovieSearch}
-                    >
-                        Search
-                    </button>
+
                 </div>
 
 

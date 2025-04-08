@@ -1,5 +1,28 @@
 @import 'bootstrap';
-/* @import 'bootstrap-icons'; */
+@import 'bootstrap-icons';
+
+/* Commons */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --primary-color: #000000;
+  --secondary-color: #6c757d;
+  --danger-color: #dc3545;
+  --light-color: #f8f9fa;
+  --dark-color: #343a40;
+}
+
+body {
+  background-color: var(--primary-color);
+}
+
+/* utilities */
+
+
 
 .movie-card {
   position: relative;
@@ -11,10 +34,11 @@
     height: auto;
     display: block;
     transition: transform 0.3s ease;
+  }
 
-    &:hover {
-      transform: scale(1.1);
-    }
+  &:hover .poster {
+    transform: scale(1.1);
+    filter: blur(2px);
   }
 
   .movie-details {
@@ -33,21 +57,21 @@
     transition: opacity 0.3s ease;
     padding: 10px;
     text-align: center;
+  }
 
-    &:hover {
-      opacity: 1;
-    }
+  &:hover .movie-details {
+    opacity: 1;
+  }
 
-    h4,
-    p {
-      margin: 5px 0;
-    }
+  .movie-details h4,
+  .movie-details p {
+    margin: 5px 0;
+  }
 
-    .overview {
-      font-size: 0.9rem;
-      margin-top: 10px;
-      overflow-y: auto;
-      padding-right: 5px;
-    }
+  .movie-details .overview {
+    font-size: 0.9rem;
+    margin-top: 10px;
+    overflow-y: auto;
+    padding-right: 5px;
   }
 }
