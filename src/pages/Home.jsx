@@ -4,13 +4,16 @@ import { FaStar } from "react-icons/fa";
 import Header from "../components/Header";
 
 export default function Home() {
-    const { movies, setQuery } = useMoviesContext();
+    const { movies } = useMoviesContext();
+    const [searchSubmitted, setSearchSubmitted] = useState(false);
 
-
+    const handleSearchSubmit = () => {
+        setSearchSubmitted(true);
+    };
 
     return (
         <>
-            <Header />
+            <Header onSearchSubmit={handleSearchSubmit} />
 
             <main>
                 <section>
@@ -40,7 +43,7 @@ export default function Home() {
                                                         alt={movie.original_language}
                                                         style={{ width: "20px", marginRight: "5px" }}
                                                     />
-                                                    {movie.original_language.toUpperCase()}
+                                                    {movie.original_language}
                                                 </p>
                                                 <div>
                                                     {[...Array(5)].map((_, index) => (
@@ -57,14 +60,13 @@ export default function Home() {
                                 ))}
                             </div>
                         ) : (
-                            <p className="text-center">No movies found. Try searching for something else.</p>
+                            searchSubmitted && (
+                                <p className="text-center text-white">No movies found. Try searching for something else.</p>
+                            )
                         )}
                     </div>
-
                 </section>
             </main>
-
-
         </>
     );
 
