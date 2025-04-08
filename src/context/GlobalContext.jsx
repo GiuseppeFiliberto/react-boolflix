@@ -7,6 +7,7 @@ function GlobalProvider({ children }) {
     const [query, setQuery] = useState('')
     const [movies, setMovies] = useState([])
     const [trendingMovies, setTrendingMovies] = useState([]);
+    const [trendingSeries, setTrendingSeries] = useState([]);
     const api_key = import.meta.env.VITE_MOVIE_DB_API_KEY;
 
 
@@ -25,37 +26,18 @@ function GlobalProvider({ children }) {
         }
     }, [query]);
 
-
-
-    function useFetchTrendingMovies() {
-        useEffect(() => {
-            fetch(
-                `https://api.themoviedb.org/3/trending/movie/?api_key=${api_key}`
-            )
-                .then((res) => res.json())
-                .then((data) => {
-                    setTrendingMovies(data.results);
-                })
-                .catch((err) => {
-                    console.log("ERROR", err);
-                });
-        }, [trendingMovies]);
-        const topTenTrending = trendingMovies.slice(0, 10);
-        return topTenTrending;
-    }
-
-    const fetchTrendingMovies = async () => {
-        try {
-            const api_key = import.meta.env.VITE_MOVIE_DB_API_KEY;
-            const response = await fetch(
-                `https://api.themoviedb.org/3/trending/movie/week?api_key=${api_key}`
-            );
-            const data = await response.json();
-            setTrendingMovies(data.results);
-        } catch (error) {
-            console.error("Error fetching trending movies:", error);
-        }
+    const fetchTrendingMovies = () => {
+        const trending_api_url = `https://api.themoviedb.org/3/trending/movie/week?api_key=${api_key}`;
+        fetch(trending_api_url)
+            .then(response => response.json())
+            .then(data => {
+                setTrendingMovies(data.results);
+            })
+            .catch(error => {
+                console.error("Error fetching trending movies:", error);
+            });
     };
+
 
     return (
         <GlobalContext.Provider value={{ movies, setMovies, query, setQuery, trendingMovies, setTrendingMovies, fetchTrendingMovies }}>
