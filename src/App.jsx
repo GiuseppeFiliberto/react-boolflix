@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Home from "./pages/Home";
 import TrendingNow from "./pages/TrendingNow";
 import { GlobalProvider } from './context/GlobalContext';
+import DefaultLayouts from "./Layouts/DefaultLayouts";
 
 function App() {
   return (
@@ -11,8 +12,11 @@ function App() {
 
 
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/trending" element={<TrendingNow />} />
+          <Route Component={DefaultLayouts}>
+            <Route path="/" element={<Home />} />
+            <Route path="/trending" element={<TrendingNow />} />
+          </Route>
+
         </Routes>
 
       </BrowserRouter>

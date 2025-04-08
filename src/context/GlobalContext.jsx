@@ -11,13 +11,18 @@ function GlobalProvider({ children }) {
 
 
     useEffect(() => {
-        const base_movies_api_url = `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${query}`;
-        console.log('API URL:', base_movies_api_url);
+        if (query) {
+            const base_movies_api_url = `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${query}`;
+            console.log('API URL:', base_movies_api_url);
 
-        fetch(base_movies_api_url)
-            .then(res => res.json())
-            .then(data => console.log('Movies Data:', data))
-            .catch(err => console.error('Fetch Error:', err));
+            fetch(base_movies_api_url)
+                .then(res => res.json())
+                .then(data => {
+                    console.log('Movies Data:', data);
+                    setMovies(data.results); // Update the movies state with fetched data
+                })
+                .catch(err => console.error('Fetch Error:', err));
+        }
     }, [query]);
 
 

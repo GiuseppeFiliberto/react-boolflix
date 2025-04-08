@@ -13,7 +13,7 @@ export default function Home() {
 
     return (
         <>
-            <Header onSearchSubmit={handleSearchSubmit} />
+
 
             <main>
                 <section>
