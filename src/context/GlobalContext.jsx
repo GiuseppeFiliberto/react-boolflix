@@ -12,7 +12,7 @@ function GlobalProvider({ children }) {
 
     useEffect(() => {
         if (query) {
-            const base_movies_api_url = `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${query}`;
+            const base_movies_api_url = `https://api.themoviedb.org/3/search/multi?api_key=${api_key}&query=${query}`;
             console.log('API URL:', base_movies_api_url);
 
             fetch(base_movies_api_url)

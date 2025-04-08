@@ -1,15 +1,11 @@
 import { useState } from "react";
 import { useMoviesContext } from '../context/GlobalContext';
 import { FaStar } from "react-icons/fa";
-import Header from "../components/Header";
 
 export default function Home() {
     const { movies } = useMoviesContext();
     const [searchSubmitted, setSearchSubmitted] = useState(false);
 
-    const handleSearchSubmit = () => {
-        setSearchSubmitted(true);
-    };
 
     return (
         <>

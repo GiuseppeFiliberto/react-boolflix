@@ -10,8 +10,8 @@ export default function TrendingNow() {
     }, [fetchTrendingMovies]);
 
     return (
-        <div className="container mt-5">
-            <h1 className="text-white mb-4">Trending Now</h1>
+        <div className="p-5">
+            <h1 className="display-2 text-white fw-bolder py-4">Trending Now</h1>
             <div className="row row-cols-1 row-cols-md-2 row-cols-lg-6 g-4">
                 {trendingMovies.map((movie) => (
                     <div key={movie.id} className="col">
@@ -34,7 +34,7 @@ export default function TrendingNow() {
                                         alt={movie.original_language}
                                         style={{ width: "20px", marginRight: "5px" }}
                                     />
-                                    {movie.original_language}
+                                    {movie.original_language.toUpperCase()}
                                 </p>
                                 <div>
                                     {[...Array(5)].map((_, index) => (
