@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import { useMoviesContext } from "../context/GlobalContext";
 import Logo from "../assets/Logonetflix.png";
 
@@ -20,6 +21,14 @@ export default function Header({ onSearchSubmit }) {
                     <div className="logo">
                         <img src={Logo} alt="" style={{ width: "200px" }} />
                     </div>
+                    <nav className="d-flex gap-3 align-items-center">
+                        <NavLink to="/" className="text-white text-decoration-none">
+                            Home
+                        </NavLink>
+                        <NavLink to="/trending" className="text-white text-decoration-none">
+                            Trending
+                        </NavLink>
+                    </nav>
                     <div className="mb-3 d-flex gap-2">
                         <input
                             type="text"

@@ -1,10 +1,24 @@
-import Home from './pages/Home';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
+import Home from "./pages/Home";
+import TrendingNow from "./pages/TrendingNow";
 import { GlobalProvider } from './context/GlobalContext';
 
-export default function App() {
+function App() {
   return (
     <GlobalProvider>
-      <Home />
+      <BrowserRouter>
+
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/trending" element={<TrendingNow />} />
+        </Routes>
+
+      </BrowserRouter>
+
     </GlobalProvider>
   );
 }
+
+export default App;
