@@ -8,6 +8,10 @@
   padding: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
 :root {
   --primary-color: #000000;
   --secondary-color: #6c757d;
